@@ -1,5 +1,8 @@
-- if current_user
-  - current_user.attributes.each do |k, v|
-    %span= k
-    %span= v
-    %br
+%table.table.table-striped
+  %tbody
+    - if current_user
+      - current_user.attributes.each do |key, value|
+        %tr
+          %th{:scope => "row"}
+          %td= key
+          %td= value

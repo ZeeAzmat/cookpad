@@ -18,5 +18,21 @@
 
 body{
   background-color: #f5f5f5;
-  // padding: 24px;
+}
+
+.navbar{
+  position: fixed;
+  z-index: 9999;
+  margin-top: -10px;
+  width: 100%;
+  li{
+    padding: 5px;
+  }
+  .search{
+    width: 600px;
+  }
+}
+
+.top-pad-5rem{
+  padding-top: 5rem;
 }

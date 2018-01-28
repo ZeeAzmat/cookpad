@@ -1,18 +1,18 @@
 %nav.navbar.navbar-expand-sm.navbar-light.bg-faded{:style => "background-color: #ddd;"}
   %button.navbar-toggler{"aria-controls" => "nav-content", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#nav-content", "data-toggle" => "collapse", :type => "button"}
     %span.navbar-toggler-icon
-  %a.navbar-brand{href: "/"} CookPad Test Project
+  = link_to 'CookPad Test Project', questions_path, class: 'navbar-brand'
   #nav-content.collapse.navbar-collapse.justify-content-end
     %ul.navbar-nav
       - if current_user
         %li
           = form_tag("/questions", method: "get") do
-            = text_field_tag(:q)#, placeholder: 'Search questions'
+            = text_field_tag :q, '', placeholder: 'Search questions', class: 'form-control search'
 
         %li.nav-item
-          Logged in as #{current_user.email}
+          = link_to "Logged in as #{current_user.email}", profile_path, class: 'nav-link'
         %li.nav-item
-          = link_to 'Log out', logout_path, method: 'delete'
+          = link_to 'Log out', logout_path, method: 'delete', class: 'nav-link'
       - else
         %li.nav-item
           = link_to 'Sign in with Google', login_path, class: 'nav-link'

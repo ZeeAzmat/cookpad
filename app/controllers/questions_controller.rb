@@ -1,4 +1,5 @@
 class QuestionsController < ApplicationController
+  before_action :authenticate_user
   before_action :set_question, only: [:show, :edit, :update, :destroy]
 
   def index
@@ -8,7 +9,6 @@ class QuestionsController < ApplicationController
       else    
         Question.all.includes(:user, answers: :user).order('created_at DESC')
       end
-    binding.pry
   end
 
   def new
