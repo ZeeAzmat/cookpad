@@ -1,0 +1,15 @@
+.container
+  .card
+    .card-block
+      %h4.card-title= @question.body
+      - if @question.answers.present?
+        .answers
+          %p.card-text Answers:
+          - @question.answers.each do |answer|
+            %h6.card-subtitle.mb-2.text-muted= answer.body
+      .float-right
+        = link_to 'Edit', edit_question_path(@question), class: 'card-link'
+        = link_to 'Destroy', @question, method: :delete, data: { confirm: 'Are you sure?' }, class: 'card-link'
+    %hr
+    %h5 Your answer
+    = render 'form'

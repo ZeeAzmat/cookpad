@@ -1,0 +1,38 @@
+.container
+  .row.col-md-12
+    .col-md-10
+      %h1 Questions
+    .col-md-2
+      = link_to 'New Question', new_question_path, class: 'btn btn-primary float-right'
+  - @questions.each do |question|
+    - user = question.user
+    .card
+      .card-block.row
+        .col-md-1
+          = image_tag user.picture, class: 'rounded-circle profile-picture'
+        .col-md-11.shift-left
+          %h4.card-title= "#{user.first_name} #{user.last_name}"
+          %h6.card-subtitle.mb-2.text-muted.float-right= question.created_at
+          %h6.card-subtitle.mb-2.text-muted
+            = link_to question.body, new_question_answer_path(question), class: 'question-link'
+          - if question.answers.present?
+            %hr
+            .answers.row
+              %p.card-text Answers:
+              .card-block.row.col-md-12
+                - question.answers.each do |answer|
+                  .col-md-1
+                    = image_tag answer.user.picture, class: 'rounded-circle profile-picture-sm'
+                  .col-md-11.shift-left-sm
+                    .row
+                      %h6= answer.user.first_name
+                    .row
+                      %h6.card-subtitle.mb-2.text-muted= answer.body
+                    .row
+                      %h6.card-subtitle.mb-2.text-muted= answer.created_at
+
+                    %hr
+          .float-right
+            = link_to 'Answer', new_question_answer_path(question), class: 'card-link'
+            = link_to 'Edit Question', edit_question_path(question), class: 'card-link'
+            = link_to 'Delete Question', question, method: :delete, data: { confirm: 'Are you sure?' }, class: 'card-link'

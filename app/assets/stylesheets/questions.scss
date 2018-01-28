@@ -1,0 +1,47 @@
+// Place all the styles related to the Questions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.container{
+  margin-top: 10px; 
+}
+
+.card{
+  padding: 1rem;
+  margin-bottom: 1rem;
+}
+
+.border{
+  border: 1px solid;
+}
+
+.question-link{
+  color: #777;
+  a:link {
+    text-decoration: none;
+  }
+  &:hover{
+    color: #333;
+  }
+}
+
+.answers{
+  margin-left: 1.5rem;
+}
+
+.profile-picture{
+  width: 50px;
+}
+
+.profile-picture-sm{
+  width: 35px;
+}
+
+.shift-left{
+  margin-left: -25px;
+}
+
+.shift-left-sm{
+  margin-left: -16px;
+}
+

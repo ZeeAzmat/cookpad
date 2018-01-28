@@ -1,0 +1,13 @@
+= form_for @answer, url: question_answers_path(@question) do |f|
+  - if @answer.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@answer.errors.count, "error")} prohibited this answer from being saved:"
+      %ul
+        - @answer.errors.full_messages.each do |message|
+          %li= message
+
+  .form-group
+    = f.text_field :body, class: 'form-control', placeholder: 'Place your answer...'
+  .form-group
+    = link_to 'Back', questions_path
+    = f.submit 'Submit your answer', class: 'btn btn-primary float-right'

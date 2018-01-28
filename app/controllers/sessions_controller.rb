@@ -4,7 +4,7 @@ class SessionsController < ApplicationController
   	@user = User.find_or_create_from_auth_hash(env["omniauth.auth"])
   	if @user.persisted?
 	  	session[:user_id] = @user.id
-	  	redirect_to :profile
+	  	redirect_to controller: 'questions', action: 'index'
 	  else
 	  	session[:user_id] = nil
 	  	redirect_to :root
