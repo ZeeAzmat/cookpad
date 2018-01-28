@@ -1,0 +1,20 @@
+%nav.navbar.navbar-expand-sm.navbar-light.bg-faded{:style => "background-color: #ddd;"}
+  %button.navbar-toggler{"aria-controls" => "nav-content", "aria-expanded" => "false", "aria-label" => "Toggle navigation", "data-target" => "#nav-content", "data-toggle" => "collapse", :type => "button"}
+    %span.navbar-toggler-icon
+  %a.navbar-brand{href: "/"} CookPad Test Project
+  #nav-content.collapse.navbar-collapse.justify-content-end
+    %ul.navbar-nav
+      - if current_user
+        %li.nav-item
+          Logged in as #{current_user.email}
+        %li.nav-item
+          =# link_to 'Log out', destroy_user_session_path, method: 'delete'
+          = link_to 'Log out', logout_path, method: 'delete'
+      - else
+        %li.nav-item
+          = link_to 'Sign in with Google', login_path, class: 'nav-link'
+        - if false
+          %li.nav-item
+            = link_to 'Sign in', new_user_session_path, class: 'nav-link'
+          %li.nav-item
+            = link_to 'Sign up', new_user_registration_path, class: 'nav-link'
